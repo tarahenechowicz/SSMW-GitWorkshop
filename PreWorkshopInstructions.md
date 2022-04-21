@@ -31,8 +31,8 @@ Download and install git for using your package manager.
 Refer to instruction for downloading Git from https://git-scm.com/download/mac. 
 I would recommend using the home brew instructions as follows:
 
-1. To install home brew, use the following instructions: https://brew.sh/
-2. Once you have home brew installed, you can typing the command into your terminal `$ brew install git`
+1. To install homebrew, use the following instructions: https://brew.sh/
+2. Once you have homebrew installed, you can typing the command into your terminal `$ brew install git`
 
 
 
