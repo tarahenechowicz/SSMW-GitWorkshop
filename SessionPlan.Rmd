@@ -3,25 +3,20 @@ title: "Intro to Git and GitHub"
 author: "Tara Henechowicz"
 date: "April 25, 2022"
 output:
-  pdf_document: default
   beamer_presentation: default
+  pdf_document: default
 ---
 
 #Session Outline
 1. Download and Install Git help, creating github account help (first 15 minutes)
 
 2. Introductions (15 minutes)
-3. Git Slides (adapted from U of T coders) (20 minutes)
-  - Version control (3 slides)
-  - describe git and github
-  - why to use git
-  - describe version control with git
-  - describe git
-  
-4. Edit a text file and git it.
-Work flow: 
-  1. git configure
+3. Git Slides (see slides from U of T coders) (20 minutes)
+4. Working with Git locally: edit a text file and git it
+5. GitHub for Collaboration
 
+  
+#Step 1. Configure git
 ```{bash}
 #This step you only do it once (first time using git on your user)
 git config --global user.name "tarahenechowicz"
@@ -30,8 +25,7 @@ git config --global user.email "tara.henechowicz@mail.utoronto.ca"
 #also recommend using your github account email
 ```
 
-  2. Create a Repository on Git  
-  
+#Step 2. Create a Repository on your computer with gitGit  
 ```{bash}
 #First step is we need to know where we are in our computer before we make a repository there. 
 #To figure out where you are (if you're lost!):
@@ -45,14 +39,12 @@ cd Documents #name of directory
 cd ..
 cd ..
 #We are going to make a directory (or folder) for our project
-mkdir GitPractice
+mkdir GitPractice2
 # now let's go into the directory that we just made
-cd GitPractice
-
+cd GitPractice2
 ```
   
-
-
+#Step 3. Git Init (Initialize the Repo)
 ```{bash}
 git init ## Create the repository (init = initialize)
 
@@ -60,41 +52,64 @@ git init ## Create the repository (init = initialize)
 git config --global init.defaultBranch
 ```
 
-Let's create a text file to store some data to work on
+#Adding files to the Repo
+- Let's create a text file to store some data to work on
+1. Create a text file named mydata.txt
 ```{bash}
 #use touch command and create a file
 touch mydata.txt
 ```
+2. Open the file and add: 
+  - your name
+  - your program
+  - your research area
+3. Save the file. 
 
-Now, open the bio.txt file and add:
-
-- Your name
-- Your program and year
-- Your progamming language/statistical language of choice
-
+#Making our first commit
 ```{bash}
+git status mydata.txt ## Check the activity
 #we need to add it to the stage so it can be commited
-git add mydata.txt ## Check the activity
+git add mydata.txt
 #you can also do git add all to add all the files in the repository (remember we only have one right now)
-git add -A
-# git commit to save file to the history with a message (-m)
-git commit -m "Initial commit"
+  #git add -A
+
+```
+you can also use `git add -A` to add all the files in your repository (remember we only have one right now)
+
+#Making our first commit
+Let's save our first set of changes using a commit. You need to put a message with a commit.
+```{bash}
+#git commit to save file to the history with a message (-m)
+git commit -m "Commit 1"
 ```
 
+#Making our second commit
+
 Now we are going to back to the text file and make a change. 
-- for example, I'm going to add my affiliation in the first line. 
+- for example, I'm going to add my affiliation in the first line 
+- you can add your programming languages and experiences
+- or add a sentence about why you want to use git
+
+#Check activity and changes with git status or git diff
 ```{bash}
 #we can use git status to see the activity
-#git status ## Check the activity
+git status ## Check the activity
+git diff # shows the difference between the changes in our repo and the last commit
+git add -A #to add all of our changes in the text file
+git status ## should be green to show that our text file is on the stage ready to be commited
 
-#git diff # shows the difference between the changes in our repo and the last commit
+```
 
-#git add -A #to add all of our changes in the text file
+#Make the commit
+```{bash}
+git commit -m "modified my affiliation"
 
-#git status ## should be green to show that our text file is on the stage ready to be commited
+```
 
-#git commit -m "modified my affiliation"
+#Let's check our log of changes
 
+```{bash}
+git log
 ```
 
 
@@ -112,7 +127,7 @@ To push our repository to github, we need to first set up the connection between
 
 ```{bash}
 #go to the repository that we just made and there is the green button called "code" and copy the code from the https
-git remote add origin https://github.com/tarahenechowicz/GitPractice.git
+  #git remote add origin https://github.com/tarahenechowicz/GitPractice.git
 
 #will prompt to ask for your username
 
