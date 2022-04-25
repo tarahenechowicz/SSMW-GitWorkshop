@@ -3,8 +3,8 @@ title: "Intro to Git and GitHub"
 author: "Tara Henechowicz"
 date: "April 25, 2022"
 output:
-  pdf_document: default
   beamer_presentation: default
+  pdf_document: default
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
