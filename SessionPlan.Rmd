@@ -16,7 +16,6 @@ knitr::opts_chunk$set(echo = FALSE)
 4. Working with Git locally: edit a text file and git it
 5. Pushing to GitHub
 6. GitHub features for Collaboration
-
   
 #Step 1. Configure git
 ```{bash}
@@ -204,9 +203,9 @@ For this lesson we are going to clone your profile repo onto your device.
 
 `-b` option creates a new branch, you don't need it just to switch
 
-- If you already have a branch created you can use `git checkout <branch name>
+If you already have a branch created you can use `git checkout <branch name>
 
-- `git branch` is code to check branches and which branch you are working on 
+`git branch` is code to check branches and which branch you are working on 
 
 #Make changes on the new branch and git commit
 
