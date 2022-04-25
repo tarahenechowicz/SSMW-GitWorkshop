@@ -132,7 +132,7 @@ Git authetication token start up : https://docs.github.com/en/authentication/kee
     - "generate a personal access token"
     - recommended you change expiration, depends on the security of your data/code. 
 ```{bash}
-git push --set-upstream origin master #or main
+#git push --set-upstream origin master #or main
 #enter your github username
 #copy and paste the token
 ```
@@ -170,7 +170,7 @@ and do git push
 
 #on github go to the repo you want to clone and hit the code button
 #select https and copy that link to: 
-git clone <your readme https>
+#git clone <your readme https>
 ```
 
 ####branch and pull request
@@ -178,17 +178,17 @@ git clone <your readme https>
 #make a new branch and make some change in the branch
 #allows you to split off onto a new version of work without affecting the main branch. Helpful for version control if you want multiple versions of the same work. 
 #to split between branches
-git checkout -b Tara
+#git checkout -b Tara
 #option to create one if one doesnt exist
 
-git branch 
+#git branch 
 #will show all of the branches you have
 
 # -b creates the branch, don't need it just to switch
 
 #open the README.md file
 
- git push --set-upsteam origin Tara
+ #git push --set-upsteam origin Tara
 #now go to github and merge the changes with the main
 ```
 
