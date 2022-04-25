@@ -3,17 +3,19 @@ title: "Intro to Git and GitHub"
 author: "Tara Henechowicz"
 date: "April 25, 2022"
 output:
-  beamer_presentation: default
   pdf_document: default
+  beamer_presentation: default
 ---
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 #Session Outline
 1. Download and Install Git help, creating github account help (first 15 minutes)
-
 2. Introductions (15 minutes)
 3. Git Slides (see slides from U of T coders) (20 minutes)
 4. Working with Git locally: edit a text file and git it
-5. GitHub for Collaboration
+5. Pushing to GitHub
+6. GitHub features for Collaboration
 
   
 #Step 1. Configure git
@@ -80,7 +82,7 @@ you can also use `git add -A` to add all the files in your repository (remember 
 Let's save our first set of changes using a commit. You need to put a message with a commit.
 ```{bash}
 #git commit to save file to the history with a message (-m)
-git commit -m "Commit 1"
+git commit -m "Commit for the first time"
 ```
 
 #Making our second commit
@@ -113,82 +115,112 @@ git log
 ```
 
 
-#PART II GitHub
+#Pushing repos from your computer to GitHub
 
-1.Create a repository on github that matches the name of your repository on your computer
+Work flow: 
+1. Create repo on GitHub
+2. Set up connection between our computer and GitHub
+3. "Push" repo from computer to GitHub
 
-- take our repository from our computer and "push it" to github so it can be store on their server in addition to or instead of our computer
-- Why would we want to do this? 
+#Create a repository on GitHub
+
+Create a repository on github that matches the name of your repository on your computer
+
+Why would we want to do this? 
   1. storage (privately or publicly)
   2. Public sharing of data (open science)
   3. now that its on github your team members or even general public can collaborate with you on your work and you can log the changes of multiple users!
+  
+#Set up the connection between our computer and github
 
-To push our repository to github, we need to first set up the connection between the repository on our computer with the repository on github
+-To push our repository to github, we need to first set up the connection between the repository on our computer with the repository on github
+- go to the repository that we just made and there is the green button called "code" and copy the code from the https
 
-```{bash}
-#go to the repository that we just made and there is the green button called "code" and copy the code from the https
-  #git remote add origin https://github.com/tarahenechowicz/GitPractice.git
+`git remote add origin <link for github repo>`
 
-#will prompt to ask for your username
+- Now the computer will prompt to ask for your github username and password
+- GitHub no longer takes your account password, you need to set up an authentication token
 
-```
+#Set up the Git authentication 
 
 Git authetication token start up : https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
-
--PAT lets git control your github account
-- don't lose it its like a password. 
-- if you forget it you have to do this process again.
-- then 
-
- - verify email address
-    - go to settings
+- verify email address
+- go to settings
     - developer settings, personal access tokens
     - "generate a personal access token"
     - recommended you change expiration, depends on the security of your data/code. 
-```{bash}
-#git push --set-upstream origin master #or main
-#enter your github username
-#copy and paste the token
-```
- 
 
-try making more changes
-go through the full workflow
-and do git push
+- Personal access token lets git control your github account
+- Don't lose it its like a password. 
+- If you forget it you have to do this process again.
+
+#"Push" the repo from your computer to GitHub
+
+In your terminal use this code: 
+`git push --set-upstream origin <name of branch>`
+<name of branch> would be main or master depending on how your git is configured
+
+- next enter your github username
+- paste your access token when it asks for a password
 
 
+#GitHub features for Collaboration
 
-##Part 3 Github features
-- useful for working together as a team
+#Issues
+- Issues are like little emails that you can send to yourself on GitHub or tag and assign others
+- You can leave notes to let people know about errors in datasets or bugs in code. 
+- You can make tasks or to-do lists. 
 
-1. Make an issue in git hub to create your README.md (15 minutes)
-```{r}
-#pull requests on your own account 
-#pull request 
-  #when there is a divergence or a branch, it takes all the divergence and squish it back into the original
+#Issues practice 
+Let's try to make an issue called "Set up github profile" on GitHub with the following to-do list: 
+ - Make a repository that is named the same as our github username
+ - Create a README.md file
+ - Inside the README.md file put in your name, bio, contact information
 
-#issue
- #say you found a type
-  # communicate with yourself, authors and teams 
-#example
-#other people can make comments
-#assign it to people
-#just an example of the many wyas github is helpful for collaborating with scientists.
-```
+#Cloning
+For this lesson we are going to clone your profile repo onto your device. 
 
-###cloning
-```{bash}
-# move back to your documents folder
-  #review, how do you find out which folder you are currently in? 
-  #how do we move to the documents folder? 
+1. Move back to your documents folder 
+  - review: how do you find out which folder you are currently in? 
+  - how do we move to the documents folder? 
+2. On GitHub, go to the repo that you want to clone and hit the code button
+3. Select https and copy that link to: 
+`git clone <repo https>
 
-#on github go to the repo you want to clone and hit the code button
-#select https and copy that link to: 
-#git clone <your readme https>
-```
+#Branches
+- Allow you to split off onto a new version of work without affecting the main branch 
+- Helpful for version control and collaboration if you want multiple versions of the same work
+- This is an introduction to a complicated git topic - the more branches, the trickier it gets. 
+- Use with caution with starting, better to focus on just using the main branch
 
-####branch and pull request
+![](https://www.nobledesktop.com/image/gitresources/git-branches-merge.png)
+
+#Make a new branch
+
+1. Use `git chekcout` to split between branches:
+
+`git checkout -b <new branch name>`
+
+`-b` option creates a new branch, you don't need it just to switch
+
+- If you already have a branch created you can use `git checkout <branch name>
+
+- `git branch` is code to check branches and which branch you are working on 
+
+#Make changes on the new branch and git commit
+
+2. Now open one of the files in the repo and make changes in the file. 
+
+3. Follow the workflow to make a commit on the branch: 
+  - review what is the workflow for making a commit? 
+
+#Push the branch to GitHub:
+
+4. Once you have made a commit, you can push that branch to GitHub:
+`git push --set-upstream origin <branch name>
+
+
 ```{bash}
 #make a new branch and make some change in the branch
 #allows you to split off onto a new version of work without affecting the main branch. Helpful for version control if you want multiple versions of the same work. 
@@ -207,20 +239,30 @@ and do git push
 #now go to github and merge the changes with the main
 ```
 
-### Forking
-- straight forward
-https://github.com/tarahenechowicz/Git-Demo
-- make a new one
+#Pull Request
 
-Collaboration with Github Further Reading
+- Demo how to use Pull Request to merge changes from branch and the main
+- get's more complicated with more complicated changes, code, or with multiple branches/users
+
+#Forking
+
+- go to the repo that you want to form, press "fork" button in top corner
+- try forking one of my repos from: https://github.com/tarahenechowicz?tab=repositories
+
+#Collaboration with Github Further Reading:
+
+Social aspects of GitHub: 
+- starring
+- following
+
+- Further reading for how to collaborate on GitHub: 
 https://github.com/tarahenechowicz/studyGroup/blob/gh-pages/lessons/git/collaboration/lesson.md
 
-# Part 4 How to use git with Rstudio
+- Intermediate and Advanced GitHub topics:
+https://github.com/tarahenechowicz/studyGroup/blob/gh-pages/lessons/git/
 
+#Demo git with Rstudio
 
-#Social aspect of Github
-starring
-following
 
 
 
