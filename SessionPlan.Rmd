@@ -218,26 +218,7 @@ For this lesson we are going to clone your profile repo onto your device.
 #Push the branch to GitHub:
 
 4. Once you have made a commit, you can push that branch to GitHub:
-`git push --set-upstream origin <branch name>
-
-
-```{bash}
-#make a new branch and make some change in the branch
-#allows you to split off onto a new version of work without affecting the main branch. Helpful for version control if you want multiple versions of the same work. 
-#to split between branches
-#git checkout -b Tara
-#option to create one if one doesnt exist
-
-#git branch 
-#will show all of the branches you have
-
-# -b creates the branch, don't need it just to switch
-
-#open the README.md file
-
- #git push --set-upsteam origin Tara
-#now go to github and merge the changes with the main
-```
+`git push --set-upstream origin <branch name>`
 
 #Pull Request
 
