@@ -1,3 +1,4 @@
 
 Tara Henechowicz, PhD candidate in Music and Health Science
 Languages: R, Git, python
+Research areas: music, genetics, neuroscience
