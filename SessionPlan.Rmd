@@ -7,7 +7,7 @@ output:
   pdf_document: default
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 #Session Outline
 1. Download and Install Git help, creating github account help (first 15 minutes)
@@ -49,8 +49,8 @@ cd GitPractice2
 ```{bash}
 git init ## Create the repository (init = initialize)
 
-#change the default branch name to mastera
-git config --global init.defaultBranch
+#change the default branch name to main
+git config --global init.defaultBranch main
 ```
 
 #Adding files to the Repo
@@ -67,7 +67,8 @@ touch mydata.txt
 3. Save the file. 
 
 #Making our first commit
-```{bash}
+
+```{bash, echo = TRUE}
 git status mydata.txt ## Check the activity
 #we need to add it to the stage so it can be commited
 git add mydata.txt
@@ -79,62 +80,46 @@ you can also use `git add -A` to add all the files in your repository (remember 
 
 #Making our first commit
 Let's save our first set of changes using a commit. You need to put a message with a commit.
-```{bash}
+```{bash, echo = TRUE}
 #git commit to save file to the history with a message (-m)
 git commit -m "Commit for the first time"
 ```
 
 #Making our second commit
 
-Now we are going to back to the text file and make a change. 
-- for example, I'm going to add my affiliation in the first line 
-- you can add your programming languages and experiences
-- or add a sentence about why you want to use git
+- Now we are going to back to the text file and make a change
+  - for example, I'm going to add my affiliation in the first line 
+  - you can add your programming languages and experiences
+  - or add a sentence about why you want to use git
 
 #Check activity and changes with git status or git diff
-```{bash}
-#we can use git status to see the activity
-git status ## Check the activity
-git diff # shows the difference between the changes in our repo and the last commit
-git add -A #to add all of our changes in the text file
-git status ## should be green to show that our text file is on the stage ready to be commited
+1. Check the activity: `git status `
+2. Shows the difference between changes in our repo and last commit: `git diff`
+3. Add all of our changes in the repo use: `git add -A` or select what files you want to commit
+4. `git status` - should return green to show that our text file is on the stage ready to be commited
+5. `git commit -m "message describing changes"`
 
-```
-
-#Make the commit
-```{bash}
-git commit -m "modified my affiliation"
-
-```
-
-#Let's check our log of changes
-
+Let's check our log of changes:
 `git log`
 
-
 #Pushing repos from your computer to GitHub
-
-Work flow: 
 1. Create repo on GitHub
 2. Set up connection between our computer and GitHub
 3. "Push" repo from computer to GitHub
 
 #Create a repository on GitHub
 
-Create a repository on github that matches the name of your repository on your computer
+##Create a repository on github that matches the name of your repository on your computer
 
-Why would we want to do this? 
+##Why would we want to do this? 
   1. storage (privately or publicly)
   2. Public sharing of data (open science)
   3. now that its on github your team members or even general public can collaborate with you on your work and you can log the changes of multiple users!
   
 #Set up the connection between our computer and github
 
--To push our repository to github, we need to first set up the connection between the repository on our computer with the repository on github
-- go to the repository that we just made and there is the green button called "code" and copy the code from the https
-
-`git remote add origin <link for github repo>`
-
+- To push our repository to github, we need to first set up the connection between the repository on our computer with the repository on github
+- go to the repository that we just made and there is the green button called "code" and copy the code from the https: `git remote add origin <link for github repo>`
 - Now the computer will prompt to ask for your github username and password
 - GitHub no longer takes your account password, you need to set up an authentication token
 
@@ -144,6 +129,7 @@ Git authetication token start up : https://docs.github.com/en/authentication/kee
 
 - verify email address
 - go to settings
+   
     - developer settings, personal access tokens
     - "generate a personal access token"
     - recommended you change expiration, depends on the security of your data/code. 
@@ -170,10 +156,10 @@ In your terminal use this code:
 - You can make tasks or to-do lists. 
 
 #Issues practice 
-Let's try to make an issue called "Set up github profile" on GitHub with the following to-do list: 
- - Make a repository that is named the same as our github username
- - Create a README.md file
- - Inside the README.md file put in your name, bio, contact information
+- Let's try to make an issue called "Set up github profile" on GitHub with the following to-do list: 
+ 1. Make a repository that is named the same as our github username
+ 2. Create a README.md file
+ 3. Inside the README.md file put in your name, bio, contact information
 
 #Cloning
 For this lesson we are going to clone your profile repo onto your device. 
@@ -227,9 +213,9 @@ If you already have a branch created you can use `git checkout <branch name>
 
 #Collaboration with Github Further Reading:
 
-Social aspects of GitHub: 
-- starring
-- following
+- Social aspects of GitHub: 
+  - starring
+  - following
 
 - Further reading for how to collaborate on GitHub: 
 https://github.com/tarahenechowicz/studyGroup/blob/gh-pages/lessons/git/collaboration/lesson.md
