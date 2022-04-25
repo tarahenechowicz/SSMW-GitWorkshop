@@ -193,8 +193,6 @@ For this lesson we are going to clone your profile repo onto your device.
 - This is an introduction to a complicated git topic - the more branches, the trickier it gets. 
 - Use with caution with starting, better to focus on just using the main branch
 
-
-
 #Make a new branch
 
 1. Use `git chekcout` to split between branches:
@@ -241,7 +239,7 @@ https://github.com/tarahenechowicz/studyGroup/blob/gh-pages/lessons/git/collabor
 - Intermediate and Advanced GitHub topics:
 https://github.com/tarahenechowicz/studyGroup/blob/gh-pages/lessons/git/
 
-#Demo git with Rstudio
+
 
 
 
