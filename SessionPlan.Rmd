@@ -1,0 +1,211 @@
+---
+title: "Intro to Git and GitHub"
+author: "Tara Henechowicz"
+date: "April 25, 2022"
+output:
+  pdf_document: default
+  beamer_presentation: default
+---
+
+#Session Outline
+1. Download and Install Git help, creating github account help (first 15 minutes)
+
+2. Introductions (15 minutes)
+3. Git Slides (adapted from U of T coders) (20 minutes)
+  - Version control (3 slides)
+  - describe git and github
+  - why to use git
+  - describe version control with git
+  - describe git
+  
+4. Edit a text file and git it.
+Work flow: 
+  1. git configure
+
+```{bash}
+#This step you only do it once (first time using git on your user)
+git config --global user.name "tarahenechowicz"
+#your github username, check your github profile
+git config --global user.email "tara.henechowicz@mail.utoronto.ca"
+#also recommend using your github account email
+```
+
+  2. Create a Repository on Git  
+  
+```{bash}
+#First step is we need to know where we are in our computer before we make a repository there. 
+#To figure out where you are (if you're lost!):
+pwd
+
+#On mac you might want to change to a place that finder can see, like within our Documents folder, so we want to put our repository into a subdirectory of our Documents 
+  #windows it is called "documents"
+  #to change the director use the command cd 
+cd Documents #name of directory
+# to go backwards use cd .. to go back one level, have to do that twice for this project
+cd ..
+cd ..
+#We are going to make a directory (or folder) for our project
+mkdir GitPractice
+# now let's go into the directory that we just made
+cd GitPractice
+
+```
+  
+
+
+```{bash}
+git init ## Create the repository (init = initialize)
+
+#change the default branch name to mastera
+git config --global init.defaultBranch
+```
+
+Let's create a text file to store some data to work on
+```{bash}
+#use touch command and create a file
+touch mydata.txt
+```
+
+Now, open the bio.txt file and add:
+
+- Your name
+- Your program and year
+- Your progamming language/statistical language of choice
+
+```{bash}
+#we need to add it to the stage so it can be commited
+git add mydata.txt ## Check the activity
+#you can also do git add all to add all the files in the repository (remember we only have one right now)
+git add -A
+# git commit to save file to the history with a message (-m)
+git commit -m "Initial commit"
+```
+
+Now we are going to back to the text file and make a change. 
+- for example, I'm going to add my affiliation in the first line. 
+```{bash}
+#we can use git status to see the activity
+git status ## Check the activity
+
+git diff # shows the difference between the changes in our repo and the last commit
+
+git add -A #to add all of our changes in the text file
+
+git status ## should be green to show that our text file is on the stage ready to be commited
+
+git commit -m "modified my affiliation"
+
+```
+
+
+#PART II GitHub
+
+1.Create a repository on github that matches the name of your repository on your computer
+
+- take our repository from our computer and "push it" to github so it can be store on their server in addition to or instead of our computer
+- Why would we want to do this? 
+  1. storage (privately or publicly)
+  2. Public sharing of data (open science)
+  3. now that its on github your team members or even general public can collaborate with you on your work and you can log the changes of multiple users!
+
+To push our repository to github, we need to first set up the connection between the repository on our computer with the repository on github
+
+```{bash}
+#go to the repository that we just made and there is the green button called "code" and copy the code from the https
+git remote add origin https://github.com/tarahenechowicz/GitPractice.git
+
+#will prompt to ask for your username
+
+```
+
+Git authetication token start up : https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+
+-PAT lets git control your github account
+- don't lose it its like a password. 
+- if you forget it you have to do this process again.
+- then 
+
+ - verify email address
+    - go to settings
+    - developer settings, personal access tokens
+    - "generate a personal access token"
+    - recommended you change expiration, depends on the security of your data/code. 
+```{bash}
+git push --set-upstream origin master #or main
+#enter your github username
+#copy and paste the token
+```
+ 
+
+try making more changes
+go through the full workflow
+and do git push
+
+
+
+##Part 3 Github features
+- useful for working together as a team
+
+1. Make an issue in git hub to create your README.md (15 minutes)
+```{r}
+#pull requests on your own account 
+#pull request 
+  #when there is a divergence or a branch, it takes all the divergence and squish it back into the original
+
+#issue
+ #say you found a type
+  # communicate with yourself, authors and teams 
+#example
+#other people can make comments
+#assign it to people
+#just an example of the many wyas github is helpful for collaborating with scientists.
+```
+
+###cloning
+```{bash}
+# move back to your documents folder
+  #review, how do you find out which folder you are currently in? 
+  #how do we move to the documents folder? 
+
+#on github go to the repo you want to clone and hit the code button
+#select https and copy that link to: 
+git clone <your readme https>
+```
+
+####branch and pull request
+```{bash}
+#make a new branch and make some change in the branch
+#allows you to split off onto a new version of work without affecting the main branch. Helpful for version control if you want multiple versions of the same work. 
+#to split between branches
+git checkout -b Tara
+#option to create one if one doesnt exist
+
+git branch 
+#will show all of the branches you have
+
+# -b creates the branch, don't need it just to switch
+
+#open the README.md file
+
+ git push --set-upsteam origin Tara
+#now go to github and merge the changes with the main
+```
+
+### Forking
+- straight forward
+https://github.com/tarahenechowicz/Git-Demo
+- make a new one
+
+Collaboration with Github Further Reading
+https://github.com/tarahenechowicz/studyGroup/blob/gh-pages/lessons/git/collaboration/lesson.md
+
+# Part 4 How to use git with Rstudio
+
+
+#Social aspect of Github
+starring
+following
+
+
+
