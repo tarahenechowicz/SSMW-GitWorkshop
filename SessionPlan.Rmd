@@ -194,7 +194,7 @@ For this lesson we are going to clone your profile repo onto your device.
 - This is an introduction to a complicated git topic - the more branches, the trickier it gets. 
 - Use with caution with starting, better to focus on just using the main branch
 
-![](https://www.nobledesktop.com/image/gitresources/git-branches-merge.png)
+
 
 #Make a new branch
 

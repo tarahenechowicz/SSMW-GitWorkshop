@@ -1,4 +1,8 @@
-\documentclass[]{article}
+\documentclass[ignorenonframetext,]{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -18,61 +22,64 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
+\usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
-\usepackage[unicode=true]{hyperref}
+\newif\ifbibliography
 \hypersetup{
             pdftitle={Intro to Git and GitHub},
             pdfauthor={Tara Henechowicz},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage[margin=1in]{geometry}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
 \makeatother
 % Scale images if necessary, so that they will not overflow the page
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+\AtBeginPart{
+  \let\insertpartnumber\relax
+  \let\partname\relax
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \let\insertsectionnumber\relax
+    \let\sectionname\relax
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \let\insertsubsectionnumber\relax
+  \let\subsectionname\relax
+  \frame{\subsectionpage}
+}
+
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
 
 \title{Intro to Git and GitHub}
 \author{Tara Henechowicz}
 \date{April 25, 2022}
 
 \begin{document}
-\maketitle
+\frame{\titlepage}
 
-\section{Session Outline}\label{session-outline}
+\begin{frame}{Session Outline}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -92,10 +99,14 @@
   GitHub features for Collaboration
 \end{enumerate}
 
-\section{Step 1. Configure git}\label{step-1.-configure-git}
+\end{frame}
 
-\section{Step 2. Create a Repository on your computer with
-gitGit}\label{step-2.-create-a-repository-on-your-computer-with-gitgit}
+\begin{frame}{Step 1. Configure git}
+
+\end{frame}
+
+\begin{frame}[fragile]{Step 2. Create a Repository on your computer with
+gitGit}
 
 \begin{verbatim}
 ## /Users/tarahenechowicz/Documents/RTeaching/IntroGitGitHub
@@ -103,15 +114,18 @@ gitGit}\label{step-2.-create-a-repository-on-your-computer-with-gitgit}
 ## mkdir: GitPractice2: File exists
 \end{verbatim}
 
-\section{Step 3. Git Init (Initialize the
-Repo)}\label{step-3.-git-init-initialize-the-repo}
+\end{frame}
+
+\begin{frame}[fragile]{Step 3. Git Init (Initialize the Repo)}
 
 \begin{verbatim}
 ## Reinitialized existing Git repository in /Users/tarahenechowicz/Documents/RTeaching/IntroGitGitHub/.git/
 ## master
 \end{verbatim}
 
-\section{Adding files to the Repo}\label{adding-files-to-the-repo}
+\end{frame}
+
+\begin{frame}{Adding files to the Repo}
 
 \begin{itemize}
 \tightlist
@@ -145,7 +159,9 @@ Repo)}\label{step-3.-git-init-initialize-the-repo}
   Save the file.
 \end{enumerate}
 
-\section{Making our first commit}\label{making-our-first-commit}
+\end{frame}
+
+\begin{frame}[fragile]{Making our first commit}
 
 \begin{verbatim}
 ## On branch master
@@ -160,314 +176,102 @@ Repo)}\label{step-3.-git-init-initialize-the-repo}
 you can also use \texttt{git\ add\ -A} to add all the files in your
 repository (remember we only have one right now)
 
-\section{Making our first commit}\label{making-our-first-commit-1}
+\end{frame}
+
+\begin{frame}[fragile]{Making our first commit}
 
 Let's save our first set of changes using a commit. You need to put a
 message with a commit.
 
 \begin{verbatim}
-## [master adc6a3d] Commit for the first time
-##  1 file changed, 1 insertion(+), 1 deletion(-)
+## [master 70df2d0] Commit for the first time
+##  1 file changed, 1 insertion(+)
 \end{verbatim}
 
-\section{Making our second commit}\label{making-our-second-commit}
+\end{frame}
+
+\begin{frame}{Making our second commit}
 
 Now we are going to back to the text file and make a change. - for
 example, I'm going to add my affiliation in the first line - you can add
 your programming languages and experiences - or add a sentence about why
 you want to use git
 
-\section{Check activity and changes with git status or git
-diff}\label{check-activity-and-changes-with-git-status-or-git-diff}
+\end{frame}
+
+\begin{frame}[fragile]{Check activity and changes with git status or git
+diff}
 
 \begin{verbatim}
 ## On branch master
 ## Changes not staged for commit:
-##   (use "git add <file>..." to update what will be committed)
+##   (use "git add/rm <file>..." to update what will be committed)
 ##   (use "git restore <file>..." to discard changes in working directory)
-##  modified:   .Rproj.user/665D533C/sources/prop/E958F836
 ##  modified:   SessionPlan.Rmd
-##  modified:   SessionPlan.pdf
+##  deleted:    SessionPlan.pdf
+## 
+## Untracked files:
+##   (use "git add <file>..." to include in what will be committed)
+##  SessionPlan.log
+##  SessionPlan.tex
 ## 
 ## no changes added to commit (use "git add" and/or "git commit -a")
-## diff --git a/.Rproj.user/665D533C/sources/prop/E958F836 b/.Rproj.user/665D533C/sources/prop/E958F836
-## index 29af6e5..1c65c83 100644
-## --- a/.Rproj.user/665D533C/sources/prop/E958F836
-## +++ b/.Rproj.user/665D533C/sources/prop/E958F836
-## @@ -1,5 +1,5 @@
-##  {
-## -    "cursorPosition" : "10,65",
-## -    "scrollLine" : "0",
-## +    "cursorPosition" : "16,18",
-## +    "scrollLine" : "4",
-##      "tempName" : "Untitled1"
-##  }
-## \ No newline at end of file
 ## diff --git a/SessionPlan.Rmd b/SessionPlan.Rmd
-## index 3b25a31..91a1fab 100644
+## index 91a1fab..96e3edc 100644
 ## --- a/SessionPlan.Rmd
 ## +++ b/SessionPlan.Rmd
-## @@ -3,17 +3,19 @@ title: "Intro to Git and GitHub"
+## @@ -3,8 +3,8 @@ title: "Intro to Git and GitHub"
 ##  author: "Tara Henechowicz"
 ##  date: "April 25, 2022"
 ##  output:
-## -  beamer_presentation: default
-##    pdf_document: default
-## +  beamer_presentation: default
+## -  pdf_document: default
+##    beamer_presentation: default
+## +  pdf_document: default
 ##  ---
-## -
-## +```{r setup, include=FALSE}
-## +knitr::opts_chunk$set(echo = FALSE)
-## +```
-##  #Session Outline
-##  1. Download and Install Git help, creating github account help (first 15 minutes)
-## -
-##  2. Introductions (15 minutes)
-##  3. Git Slides (see slides from U of T coders) (20 minutes)
-##  4. Working with Git locally: edit a text file and git it
-## -5. GitHub for Collaboration
-## +5. Pushing to GitHub
-## +6. GitHub features for Collaboration
-##  
-##    
-##  #Step 1. Configure git
-## @@ -80,7 +82,7 @@ you can also use `git add -A` to add all the files in your repository (remember
-##  Let's save our first set of changes using a commit. You need to put a message with a commit.
-##  ```{bash}
-##  #git commit to save file to the history with a message (-m)
-## -git commit -m "Commit 1"
-## +git commit -m "Commit for the first time"
-##  ```
-##  
-##  #Making our second commit
-## @@ -113,82 +115,112 @@ git log
-##  ```
-##  
-##  
-## -#PART II GitHub
-## +#Pushing repos from your computer to GitHub
-##  
-## -1.Create a repository on github that matches the name of your repository on your computer
-## +Work flow: 
-## +1. Create repo on GitHub
-## +2. Set up connection between our computer and GitHub
-## +3. "Push" repo from computer to GitHub
-##  
-## -- take our repository from our computer and "push it" to github so it can be store on their server in addition to or instead of our computer
-## -- Why would we want to do this? 
-## +#Create a repository on GitHub
-## +
-## +Create a repository on github that matches the name of your repository on your computer
-## +
-## +Why would we want to do this? 
-##    1. storage (privately or publicly)
-##    2. Public sharing of data (open science)
-##    3. now that its on github your team members or even general public can collaborate with you on your work and you can log the changes of multiple users!
-## +  
-## +#Set up the connection between our computer and github
-##  
-## -To push our repository to github, we need to first set up the connection between the repository on our computer with the repository on github
-## +-To push our repository to github, we need to first set up the connection between the repository on our computer with the repository on github
-## +- go to the repository that we just made and there is the green button called "code" and copy the code from the https
-##  
-## -```{bash}
-## -#go to the repository that we just made and there is the green button called "code" and copy the code from the https
-## -  #git remote add origin https://github.com/tarahenechowicz/GitPractice.git
-## +`git remote add origin <link for github repo>`
-##  
-## -#will prompt to ask for your username
-## +- Now the computer will prompt to ask for your github username and password
-## +- GitHub no longer takes your account password, you need to set up an authentication token
-##  
-## -```
-## +#Set up the Git authentication 
-##  
-##  Git authetication token start up : https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-##  
-## -
-## --PAT lets git control your github account
-## -- don't lose it its like a password. 
-## -- if you forget it you have to do this process again.
-## -- then 
-## -
-## - - verify email address
-## -    - go to settings
-## +- verify email address
-## +- go to settings
-##      - developer settings, personal access tokens
-##      - "generate a personal access token"
-##      - recommended you change expiration, depends on the security of your data/code. 
-## -```{bash}
-## -#git push --set-upstream origin master #or main
-## -#enter your github username
-## -#copy and paste the token
-## -```
-## - 
-##  
-## -try making more changes
-## -go through the full workflow
-## -and do git push
-## +- Personal access token lets git control your github account
-## +- Don't lose it its like a password. 
-## +- If you forget it you have to do this process again.
-##  
-## +#"Push" the repo from your computer to GitHub
-##  
-## +In your terminal use this code: 
-## +`git push --set-upstream origin <name of branch>`
-## +<name of branch> would be main or master depending on how your git is configured
-##  
-## -##Part 3 Github features
-## -- useful for working together as a team
-## +- next enter your github username
-## +- paste your access token when it asks for a password
-##  
-## -1. Make an issue in git hub to create your README.md (15 minutes)
-## -```{r}
-## -#pull requests on your own account 
-## -#pull request 
-## -  #when there is a divergence or a branch, it takes all the divergence and squish it back into the original
-##  
-## -#issue
-## - #say you found a type
-## -  # communicate with yourself, authors and teams 
-## -#example
-## -#other people can make comments
-## -#assign it to people
-## -#just an example of the many wyas github is helpful for collaborating with scientists.
-## -```
-## +#GitHub features for Collaboration
-##  
-## -###cloning
-## -```{bash}
-## -# move back to your documents folder
-## -  #review, how do you find out which folder you are currently in? 
-## -  #how do we move to the documents folder? 
-## +#Issues
-## +- Issues are like little emails that you can send to yourself on GitHub or tag and assign others
-## +- You can leave notes to let people know about errors in datasets or bugs in code. 
-## +- You can make tasks or to-do lists. 
-## +
-## +#Issues practice 
-## +Let's try to make an issue called "Set up github profile" on GitHub with the following to-do list: 
-## + - Make a repository that is named the same as our github username
-## + - Create a README.md file
-## + - Inside the README.md file put in your name, bio, contact information
-## +
-## +#Cloning
-## +For this lesson we are going to clone your profile repo onto your device. 
-## +
-## +1. Move back to your documents folder 
-## +  - review: how do you find out which folder you are currently in? 
-## +  - how do we move to the documents folder? 
-## +2. On GitHub, go to the repo that you want to clone and hit the code button
-## +3. Select https and copy that link to: 
-## +`git clone <repo https>
-## +
-## +#Branches
-## +- Allow you to split off onto a new version of work without affecting the main branch 
-## +- Helpful for version control and collaboration if you want multiple versions of the same work
-## +- This is an introduction to a complicated git topic - the more branches, the trickier it gets. 
-## +- Use with caution with starting, better to focus on just using the main branch
-## +
-## +![](https://www.nobledesktop.com/image/gitresources/git-branches-merge.png)
-## +
-## +#Make a new branch
-## +
-## +1. Use `git chekcout` to split between branches:
-## +
-## +`git checkout -b <new branch name>`
-## +
-## +`-b` option creates a new branch, you don't need it just to switch
-## +
-## +- If you already have a branch created you can use `git checkout <branch name>
-## +
-## +- `git branch` is code to check branches and which branch you are working on 
-## +
-## +#Make changes on the new branch and git commit
-## +
-## +2. Now open one of the files in the repo and make changes in the file. 
-## +
-## +3. Follow the workflow to make a commit on the branch: 
-## +  - review what is the workflow for making a commit? 
-## +
-## +#Push the branch to GitHub:
-## +
-## +4. Once you have made a commit, you can push that branch to GitHub:
-## +`git push --set-upstream origin <branch name>
-##  
-## -#on github go to the repo you want to clone and hit the code button
-## -#select https and copy that link to: 
-## -#git clone <your readme https>
-## -```
-##  
-## -####branch and pull request
-##  ```{bash}
-##  #make a new branch and make some change in the branch
-##  #allows you to split off onto a new version of work without affecting the main branch. Helpful for version control if you want multiple versions of the same work. 
-## @@ -207,20 +239,30 @@ and do git push
-##  #now go to github and merge the changes with the main
-##  ```
-##  
-## -### Forking
-## -- straight forward
-## -https://github.com/tarahenechowicz/Git-Demo
-## -- make a new one
-## +#Pull Request
-## +
-## +- Demo how to use Pull Request to merge changes from branch and the main
-## +- get's more complicated with more complicated changes, code, or with multiple branches/users
-## +
-## +#Forking
-## +
-## +- go to the repo that you want to form, press "fork" button in top corner
-## +- try forking one of my repos from: https://github.com/tarahenechowicz?tab=repositories
-## +
-## +#Collaboration with Github Further Reading:
-## +
-## +Social aspects of GitHub: 
-## +- starring
-## +- following
-##  
-## -Collaboration with Github Further Reading
-## +- Further reading for how to collaborate on GitHub: 
-##  https://github.com/tarahenechowicz/studyGroup/blob/gh-pages/lessons/git/collaboration/lesson.md
-##  
-## -# Part 4 How to use git with Rstudio
-## +- Intermediate and Advanced GitHub topics:
-## +https://github.com/tarahenechowicz/studyGroup/blob/gh-pages/lessons/git/
-##  
-## +#Demo git with Rstudio
-##  
-## -#Social aspect of Github
-## -starring
-## -following
-##  
-##  
-##  
+##  ```{r setup, include=FALSE}
+##  knitr::opts_chunk$set(echo = FALSE)
 ## diff --git a/SessionPlan.pdf b/SessionPlan.pdf
-## index ba7912b..cea10e5 100644
-## Binary files a/SessionPlan.pdf and b/SessionPlan.pdf differ
+## deleted file mode 100644
+## index cea10e5..0000000
+## Binary files a/SessionPlan.pdf and /dev/null differ
 ## On branch master
 ## Changes to be committed:
 ##   (use "git restore --staged <file>..." to unstage)
-##  modified:   .Rproj.user/665D533C/sources/prop/E958F836
 ##  modified:   SessionPlan.Rmd
-##  modified:   SessionPlan.pdf
+##  new file:   SessionPlan.log
+##  deleted:    SessionPlan.pdf
+##  new file:   SessionPlan.tex
 \end{verbatim}
 
-\section{Make the commit}\label{make-the-commit}
+\end{frame}
+
+\begin{frame}[fragile]{Make the commit}
 
 \begin{verbatim}
-## [master 9998ddf] modified my affiliation
-##  3 files changed, 110 insertions(+), 68 deletions(-)
-##  rewrite SessionPlan.pdf (89%)
+## [master ea491b3] modified my affiliation
+##  4 files changed, 1468 insertions(+), 1 deletion(-)
+##  create mode 100644 SessionPlan.log
+##  delete mode 100644 SessionPlan.pdf
+##  create mode 100644 SessionPlan.tex
 \end{verbatim}
 
-\section{Let's check our log of
-changes}\label{lets-check-our-log-of-changes}
+\end{frame}
+
+\begin{frame}[fragile]{Let's check our log of changes}
 
 \begin{verbatim}
+## commit ea491b36f863a8e9ad11bd07da10f4f3ac6c09ee
+## Author: tarahenechowicz <tara.henechowicz@mail.utoronto.ca>
+## Date:   Mon Apr 25 10:47:02 2022 -0400
+## 
+##     modified my affiliation
+## 
+## commit 70df2d0001382c267f7427a7e90fa8678e9638d8
+## Author: tarahenechowicz <tara.henechowicz@mail.utoronto.ca>
+## Date:   Mon Apr 25 10:47:02 2022 -0400
+## 
+##     Commit for the first time
+## 
 ## commit 9998ddf184467dbad7f1e25bd524ec5d286b4c2f
 ## Author: tarahenechowicz <tara.henechowicz@mail.utoronto.ca>
 ## Date:   Mon Apr 25 10:46:06 2022 -0400
@@ -535,14 +339,16 @@ changes}\label{lets-check-our-log-of-changes}
 ##     Initial commit
 \end{verbatim}
 
-\section{Pushing repos from your computer to
-GitHub}\label{pushing-repos-from-your-computer-to-github}
+\end{frame}
+
+\begin{frame}{Pushing repos from your computer to GitHub}
 
 Work flow: 1. Create repo on GitHub 2. Set up connection between our
 computer and GitHub 3. ``Push'' repo from computer to GitHub
 
-\section{Create a repository on
-GitHub}\label{create-a-repository-on-github}
+\end{frame}
+
+\begin{frame}{Create a repository on GitHub}
 
 Create a repository on github that matches the name of your repository
 on your computer
@@ -552,8 +358,10 @@ Public sharing of data (open science) 3. now that its on github your
 team members or even general public can collaborate with you on your
 work and you can log the changes of multiple users!
 
-\section{Set up the connection between our computer and
-github}\label{set-up-the-connection-between-our-computer-and-github}
+\end{frame}
+
+\begin{frame}[fragile]{Set up the connection between our computer and
+github}
 
 -To push our repository to github, we need to first set up the
 connection between the repository on our computer with the repository on
@@ -572,8 +380,9 @@ button called ``code'' and copy the code from the https
   authentication token
 \end{itemize}
 
-\section{Set up the Git
-authentication}\label{set-up-the-git-authentication}
+\end{frame}
+
+\begin{frame}{Set up the Git authentication}
 
 Git authetication token start up :
 \url{https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token}
@@ -603,8 +412,9 @@ Git authetication token start up :
   If you forget it you have to do this process again.
 \end{itemize}
 
-\section{\texorpdfstring{``Push'' the repo from your computer to
-GitHub}{Push the repo from your computer to GitHub}}\label{push-the-repo-from-your-computer-to-github}
+\end{frame}
+
+\begin{frame}[fragile]{``Push'' the repo from your computer to GitHub}
 
 In your terminal use this code:
 \texttt{git\ push\ -\/-set-upstream\ origin\ \textless{}name\ of\ branch\textgreater{}}
@@ -618,10 +428,13 @@ would be main or master depending on how your git is configured
   paste your access token when it asks for a password
 \end{itemize}
 
-\section{GitHub features for
-Collaboration}\label{github-features-for-collaboration}
+\end{frame}
 
-\section{Issues}\label{issues}
+\begin{frame}{GitHub features for Collaboration}
+
+\end{frame}
+
+\begin{frame}{Issues}
 
 \begin{itemize}
 \tightlist
@@ -635,14 +448,18 @@ Collaboration}\label{github-features-for-collaboration}
   You can make tasks or to-do lists.
 \end{itemize}
 
-\section{Issues practice}\label{issues-practice}
+\end{frame}
+
+\begin{frame}{Issues practice}
 
 Let's try to make an issue called ``Set up github profile'' on GitHub
 with the following to-do list: - Make a repository that is named the
 same as our github username - Create a README.md file - Inside the
 README.md file put in your name, bio, contact information
 
-\section{Cloning}\label{cloning}
+\end{frame}
+
+\begin{frame}{Cloning}
 
 For this lesson we are going to clone your profile repo onto your
 device.
@@ -673,7 +490,9 @@ device.
   Select https and copy that link to: `git clone 
 \end{enumerate}
 
-\section{Branches}\label{branches}
+\end{frame}
+
+\begin{frame}{Branches}
 
 \begin{itemize}
 \tightlist
@@ -697,7 +516,9 @@ device.
 \caption{}
 \end{figure}
 
-\section{Make a new branch}\label{make-a-new-branch}
+\end{frame}
+
+\begin{frame}[fragile]{Make a new branch}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -719,8 +540,9 @@ switch
   are working on
 \end{itemize}
 
-\section{Make changes on the new branch and git
-commit}\label{make-changes-on-the-new-branch-and-git-commit}
+\end{frame}
+
+\begin{frame}{Make changes on the new branch and git commit}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -737,7 +559,9 @@ commit}\label{make-changes-on-the-new-branch-and-git-commit}
   review what is the workflow for making a commit?
 \end{itemize}
 
-\section{Push the branch to GitHub:}\label{push-the-branch-to-github}
+\end{frame}
+
+\begin{frame}{Push the branch to GitHub:}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -748,7 +572,9 @@ commit}\label{make-changes-on-the-new-branch-and-git-commit}
   push --set-upstream origin 
 \end{enumerate}
 
-\section{Pull Request}\label{pull-request}
+\end{frame}
+
+\begin{frame}{Pull Request}
 
 \begin{itemize}
 \tightlist
@@ -759,7 +585,9 @@ commit}\label{make-changes-on-the-new-branch-and-git-commit}
   multiple branches/users
 \end{itemize}
 
-\section{Forking}\label{forking}
+\end{frame}
+
+\begin{frame}{Forking}
 
 \begin{itemize}
 \tightlist
@@ -771,8 +599,9 @@ commit}\label{make-changes-on-the-new-branch-and-git-commit}
   \url{https://github.com/tarahenechowicz?tab=repositories}
 \end{itemize}
 
-\section{Collaboration with Github Further
-Reading:}\label{collaboration-with-github-further-reading}
+\end{frame}
+
+\begin{frame}{Collaboration with Github Further Reading:}
 
 Social aspects of GitHub: - starring - following
 
@@ -785,6 +614,10 @@ Social aspects of GitHub: - starring - following
   \url{https://github.com/tarahenechowicz/studyGroup/blob/gh-pages/lessons/git/}
 \end{itemize}
 
-\section{Demo git with Rstudio}\label{demo-git-with-rstudio}
+\end{frame}
+
+\begin{frame}{Demo git with Rstudio}
+
+\end{frame}
 
 \end{document}
