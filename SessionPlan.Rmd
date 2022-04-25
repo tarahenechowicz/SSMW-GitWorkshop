@@ -85,15 +85,15 @@ Now we are going to back to the text file and make a change.
 - for example, I'm going to add my affiliation in the first line. 
 ```{bash}
 #we can use git status to see the activity
-git status ## Check the activity
+#git status ## Check the activity
 
-git diff # shows the difference between the changes in our repo and the last commit
+#git diff # shows the difference between the changes in our repo and the last commit
 
-git add -A #to add all of our changes in the text file
+#git add -A #to add all of our changes in the text file
 
-git status ## should be green to show that our text file is on the stage ready to be commited
+#git status ## should be green to show that our text file is on the stage ready to be commited
 
-git commit -m "modified my affiliation"
+#git commit -m "modified my affiliation"
 
 ```
 
