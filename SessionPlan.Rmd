@@ -109,9 +109,7 @@ git commit -m "modified my affiliation"
 
 #Let's check our log of changes
 
-```{bash}
-git log
-```
+`git log`
 
 
 #Pushing repos from your computer to GitHub
